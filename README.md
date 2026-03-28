@@ -5,14 +5,14 @@ Secure RESTful API for IoT Water Quality Monitoring System with FreeRTOS, ESP32,
 ## Architecture
 
 ```
-┌─────────────┐     WiFi HTTP POST      ┌─────────────┐
+┌─────────────┐     WiFi HTTP POST       ┌─────────────┐
 │   Gateway   │ ───────────────────────> │     API     │
 │   (ESP32)   │  (Encrypted JSON + Key)  │  (Node.js)  │
 └─────────────┘                          └──────┬──────┘
                                                 │
                                          ┌──────┴──────┐
                                          │             │
-                                    ┌────▼───┐    ┌───▼────┐
+                                    ┌────▼────┐    ┌───▼────┐
                                     │ MongoDB │    │  MQTT  │
                                     │Database │    │Broker  │
                                     └─────────┘    └───┬────┘
@@ -352,9 +352,6 @@ npm start
 - Check API URL is accessible from Gateway network
 - Enable CORS for Gateway IP if needed
 
-## License
-
-MIT
 
 ## Support
 
