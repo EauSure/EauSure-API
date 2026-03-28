@@ -132,7 +132,13 @@ process.on('unhandledRejection', (reason: any) => {
   process.exit(1);
 });
 
-// Start server
-startServer();
+// Start server only if not in serverless environment
+if (process.env.VERCEL !== '1') {
+  startServer();
+} else {
+  // In Vercel, just initialize connections
+  connectDatabase().catch(console.error);
+  mqttService.connect().catch(() => console.warn('[MQTT] Disabled in serverless'));
+}
 
 export default app;
